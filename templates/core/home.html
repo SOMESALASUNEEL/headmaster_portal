@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - forAPHMs{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="latest-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center">
+                <h1 class="display-5 fw-bold mb-3">Welcome to all AP Headmasters</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest and Most Downloaded Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Latest Documents -->
+            <div class="col-lg-6 mb-4">
+                <div class="card category-card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-bolt me-2"></i>Latest Documents
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            {% for document in latest_documents %}
+                            <a href="{% url 'document_detail' document.pk %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="fw-bold">{{ document.title }}</div>
+                                    <small class="text-muted">{{ document.category.name }}</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">{{ document.date_added|date:"M d" }}</span>
+                            </a>
+                            {% empty %}
+                            <p class="text-muted">No recent documents yet.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Most Downloaded -->
+            <div class="col-lg-6 mb-4">
+                <div class="card category-card h-100">
+                    <div class="card-header bg-warning text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-download me-2"></i>Most Downloaded
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            {% for document in most_downloaded %}
+                            <a href="{% url 'document_detail' document.pk %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="fw-bold">{{ document.title }}</div>
+                                    <small class="text-muted">{{ document.category.name }}</small>
+                                </div>
+                                <span class="badge bg-success rounded-pill">{{ document.download_count }} downloads</span>
+                            </a>
+                            {% empty %}
+                            <p class="text-muted">No downloads yet.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-5">
+                    <i class="fas fa-folder-open me-2"></i>Categories
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for category_data in categories_with_docs %}
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card category-card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <a href="{% url 'document_list' %}?category={{ category_data.category.pk }}" class="text-white text-decoration-none">
+                                <i class="fas fa-folder me-2"></i>{{ category_data.category.name }}
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% for document in category_data.documents %}
+                        <div class="document-item mb-2">
+                            <a href="{% url 'document_detail' document.pk %}" class="text-decoration-none text-dark">
+                                <i class="fas fa-file me-2 text-muted"></i>{{ document.title }}
+                            </a>
+                        </div>
+                        {% empty %}
+                        <p class="text-muted small">No documents in this category yet.</p>
+                        {% endfor %}
+                    </div>
+                    <div class="card-footer bg-transparent text-center">
+                        <a href="{% url 'document_list' %}?category={{ category_data.category.pk }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-list me-1"></i>View All Items
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center">
+                <h2 class="mb-3">
+                    <i class="fas fa-envelope text-success me-2"></i>Need Help?
+                </h2>
+                <p class="text-muted mb-4">Have questions about our resources or need support? We're here to help!</p>
+                <a href="{% url 'contact' %}" class="btn btn-success btn-lg">
+                    <i class="fas fa-paper-plane me-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

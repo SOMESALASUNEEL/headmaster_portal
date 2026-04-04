@@ -1,0 +1,213 @@
+/* Custom Styles for forAPHMs Portal */
+
+/* Color Theme - Professional Green Shades */
+:root {
+    --primary-color: #166534; /* Dark Green */
+    --secondary-color: #F0FDF4; /* Very Light Green */
+    --accent-color: #BBF7D0; /* Light Green Borders */
+    --text-dark: #052E16; /* Very Dark Green for Text */
+    --text-muted: #15803D; /* Medium Green for Muted Text */
+    --white: #FFFFFF;
+}
+
+/* Body */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.header-navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--accent-color);
+    border-radius: 8px 8px 0 0 !important;
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #14532D;
+    border-color: #14532D;
+}
+
+.btn-outline-light {
+    border-radius: 6px;
+}
+
+/* Search */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid var(--accent-color);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.1);
+}
+
+/* Search Highlight */
+.highlight-match {
+    background-color: #FEF08A; /* Light yellow */
+    color: #166534; /* Dark green */
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background-color: var(--white) !important;
+    color: var(--text-muted) !important;
+    border-top: 1px solid var(--accent-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 50px 0;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 4px solid #14532D;
+}
+
+.hero-section h1 {
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.latest-section h2 {
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+/* Category Cards */
+.category-card {
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: var(--white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.category-card .card-header {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.document-item {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--accent-color);
+    transition: background-color 0.2s ease;
+}
+
+.document-item:last-child {
+    border-bottom: none;
+}
+
+.document-item:hover {
+    background-color: var(--secondary-color);
+}
+
+.document-item a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.document-item a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Tags */
+.tag {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--text-muted);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin: 2px;
+    border: 1px solid var(--accent-color);
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 30px 0;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #86EFAC;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4ADE80;
+}
